@@ -1,6 +1,6 @@
 {
-  "name": "eosjs",
-  "version": "15.0.0",
+  "name": "oasisjs",
+  "version": "1.0.0",
   "description": "General purpose library for the EOS blockchain.",
   "main": "lib/index.js",
   "scripts": {
@@ -25,7 +25,7 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/EOSIO/eosjs/issues"
+    "url": "https://github.com/EOSIO/eosjs.git/issues"
   },
   "homepage": "https://github.com/EOSIO/eosjs#readme",
   "devDependencies": {

@@ -1,0 +1,18 @@
+{
+  "newteam": {
+    "base": "",
+    "action": {
+      "name": "newteam",
+      "account": "eosio"
+    },
+    "fields": {
+      "owner": "name",
+      "banker" :"name",
+      "players": "name",
+      "scoresum": "uint8",
+      "cost": "asset",
+      "stake": "asset",
+      "gameid": "uint8"
+    }
+  }
+}
