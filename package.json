@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EOSIO/eosjs.git"
+    "url": "git+https://github.com/oasis-eos/eosjs.git"
   },
   "keywords": [
     "EOS",
@@ -25,9 +25,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/EOSIO/eosjs.git/issues"
+    "url": "https://github.com/oasis-eos/eosjs.git/issues"
   },
-  "homepage": "https://github.com/EOSIO/eosjs#readme",
+  "homepage": "https://github.com/oasis-eos/eosjs#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
