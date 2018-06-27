@@ -3,16 +3,28 @@
     "base": "",
     "action": {
       "name": "newteam",
-      "account": "eosio"
+      "account": "fifa"
     },
     "fields": {
-      "owner": "name",
-      "banker" :"name",
-      "players": "name",
+      "owner": "account_name",
+      "banker" :"account_name",
+      "players": "uint32[]",
       "scoresum": "uint8",
       "cost": "asset",
       "stake": "asset",
       "gameid": "uint8"
+    }
+  },
+  "newgame": {
+    "base": "",
+    "action": {
+      "name": "newgame",
+      "account": "eosio"
+    },
+    "fields": {
+      "name": "string",
+      "rewardway": "uint8"
+
     }
   }
 }
