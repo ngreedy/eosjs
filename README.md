@@ -554,8 +554,8 @@ var eos = Eos()
 
 ```
 let {Keystore, Keygen} = require('eosjs-keygen')
-//Eos = require('./eosjs/src/index.js')
-Eos = require('oasisjs')
+Eos = require('./eosjs/src/index.js')
+//Eos = require('oasisjs')
 fs = require('fs')
 binaryen = require('binaryen')
 
@@ -570,13 +570,13 @@ sessionConfig = {
 }
 
 //keystore = Keystore('myaccount', sessionConfig)
-Keygen.generateMasterKeys().then(rel => console.log(rel))
+//Keygen.generateMasterKeys().then(rel => console.log(rel))
 
 // Default configuration (additional options below)
 config = {
   chainId: "c40a90d6bcb4b9b2c2d4c0916ee97a29af42a420372af44fa4f538ddef9e6b83", // 32 byte (64 char) hex string
   keyProvider: ['5KZ2ytRsGMxRAycpFqFnkRF8mNfZTomQKnaXzh1FtbRPgbaTAF3','5Hz2G2L9p3k7YhkqGJaioNJQnYKjtZKKS2y3wRLDobCQAtXg5oA','5KRwwqFRdZ1v5UNcXPk72Mq3t4ucs7kMmqKx9HLpUnnk74iKWen'], // WIF string or array of keys..
-  httpEndpoint: 'http://192.168.1.242:8888',
+  //httpEndpoint: 'http://192.168.1.242:8888',
   expireInSeconds: 60,
   broadcast: true,
   verbose: false, // API activity
@@ -584,43 +584,58 @@ config = {
 }
 
 eos = Eos(config,binaryen)
-console.log(eos)
-eos.getInfo((error, result) => { console.log(error, result) })
-eos.getCurrencyBalance('eosio.token','eosio','SYS').then(rel => console.log(rel))
+//console.log(eos)
+//eos.getInfo((error, result) => { console.log(error, result) })
+//eos.getCurrencyBalance('eosio.token','eosio','SYS').then(rel => console.log(rel))
 fifapara = {
   json: true,
   code: "eosio",
   scope: "eosio",
   table: "team"
 }
-eos.getTableRows(fifapara).then(rel => console.log(rel))
+updateauthconfig = {
+"account": "user4",
+"permission": "active",
+"parent": "owner",
+"auth": {"threshold": 1, "keys":[{"key":"EOS7sBeJzasK9vDCybdg2jmqJeTf42iohxideWTeWtWzNYaaRKMgA", "weight":1}], "accounts":[{"permission":{"actor":"fifa","permission":"eosio.code"},"weight":1}], "waits":[] }
+
+}
+eos.updateauth(updateauthconfig)
+//eos.getTableRows(fifapara).then(rel => console.log(rel))
 options = {
   authorization: 'eosio.token@active',
   broadcast: true,
   sign: true
 }
-eos.transfer('eosio.token', 'eosio', '1.0000 SYS', '', options)
+//eos.transfer('eosio.token', 'eosio', '1.0000 SYS', '', options)
 const headers = {
   expiration: '2018-06-14T18:16:10',
   ref_block_num: 1,
   ref_block_prefix: 452435776
 }
 
+
+
 eos.transaction(
   {
     // ...headers,
     actions: [
       {
-        account: 'eosio',
+        account: 'fifa',
         name: 'newteam',
         authorization: [{
-          actor: 'user1',
+          actor: 'user4',
           permission: 'active'
-        }],
+        },
+        {
+          actor: 'eosio.token',
+          permission: 'active'
+        },
+        ],
         data: {
-          "owner": "user1",
+          "owner": "user4",
           "banker": "eosio.token",
-          "players":"1",
+          "players": [0,1],
           "scoresum": 0,
           "cost": "0.0000 SYS",
           "stake": "2.0000 SYS",
@@ -633,25 +648,24 @@ eos.transaction(
 ).then(rel => console.log(rel))
 
 
-wasm = fs.readFileSync(`/Users/sam/Public/oasis-eos/oasis/contracts/eosio.token/eosio.token.wasm`)
-abi = fs.readFileSync(`/Users/sam/Public/oasis-eos/oasis/contracts/eosio.token/eosio.token.abi`)
+//wasm = fs.readFileSync(`/Users/sam/Public/oasis-eos/oasis/contracts/eosio.token/eosio.token.wasm`)
+//abi = fs.readFileSync(`/Users/sam/Public/oasis-eos/oasis/contracts/eosio.token/eosio.token.abi`)
 
 // Publish contract to the blockchain
-eos.setcode('eosio.token', 0, 0, wasm).then(result => console.log(result)) // @returns {Promise}
-eos.setabi('eosio.token', JSON.parse(abi)) // @returns {Promise}
-eos.contract('eosio.token').then(tokencontract => tokencontract.create('eosio.token','1000.0000 SYS'))
-eos.contract('eosio.token').then(tokencontract => tokencontract.issue('eosio.token','1000.0000 SYS','init issue'))
+//eos.setcode('eosio.token', 0, 0, wasm).then(result => console.log(result)) // @returns {Promise}
+//eos.setabi('eosio.token', JSON.parse(abi)) // @returns {Promise}
+//eos.contract('eosio.token').then(tokencontract => tokencontract.create('eosio.token','1000.0000 SYS'))
+//eos.contract('eosio.token').then(tokencontract => tokencontract.issue('eosio.token','1000.0000 SYS','init issue'))
 
- eos.transaction(tr => {
-   tr.newaccount({
-     creator: 'eosio.token',
-     name: 'sam',
-     owner: "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV",
-     active: "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV"
-   })
- }
- )
-
+// eos.transaction(tr => {
+//   tr.newaccount({
+//     creator: 'eosio.token',
+//     name: 'sam',
+//     owner: "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV",
+//     active: "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV"
+//   })
+// }
+// )
 
 ```
 # Environment
