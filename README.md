@@ -666,6 +666,55 @@ eos.transaction(
 //   })
 // }
 // )
+//After deploy system contract
+eos.transaction(
+  {
+    // ...headers,
+    actions: [
+      {
+        account: 'eosio',
+        name: 'newaccount',
+        authorization: [{
+          actor: 'sam',
+          permission: 'active'
+        },
+        ],
+        data: {
+          "creator":"sam",
+          "name":"samkunnbanba",
+          "owner":{
+            "threshold":1,
+            "keys":[
+              {"key":"EOS8iMssGkoszPCKqCCrYpaVJttzQtJPis1DjpgjHJbdCCNM6AUgK","weight":1}
+            ],
+            "accounts":[],
+            "waits":[]},
+            "active":{
+              "threshold":1,
+              "keys":[
+                {"key":"EOS8iMssGkoszPCKqCCrYpaVJttzQtJPis1DjpgjHJbdCCNM6AUgK",
+                "weight":1
+              }],"accounts":[],"waits":[]}}
+      },
+      {
+        account: 'eosio',
+        name: 'buyrambytes',
+        authorization: [{
+          actor: 'sam',
+          permission: 'active'
+        }
+        ],
+        data: {
+          "payer":"sam",
+          "receiver":"samkunnbanba",
+          "bytes":102400000
+        }
+      }
+
+    ]
+  }
+  // options -- example: {broadcast: false}
+).then(rel => console.log(rel))
 
 ```
 # Environment
