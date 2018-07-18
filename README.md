@@ -721,6 +721,8 @@ eos.transaction(
 publickeyAccount = {"public_key":"EOS5Y5DE3G1zK31CVjJkWkkPVEGTiLZF1kvf4qZn7DrczeFsxnQ4w"}
 eos.getKeyAccounts(publickeyAccount).then(rel => console.log(rel))
 
+eos.getAccount("eosio").then(rel => console.log(rel))
+eos.getTransaction("c6c1fd3fb4595c9c7ffd1e9354c050e050f5d35e738f351137df6c99d6c1bd21").then(rel => console.log(rel))
 ```
 # Environment
 
