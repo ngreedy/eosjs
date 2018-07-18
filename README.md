@@ -723,6 +723,26 @@ eos.getKeyAccounts(publickeyAccount).then(rel => console.log(rel))
 
 eos.getAccount("eosio").then(rel => console.log(rel))
 eos.getTransaction("c6c1fd3fb4595c9c7ffd1e9354c050e050f5d35e738f351137df6c99d6c1bd21").then(rel => console.log(rel))
+
+updateauthpara = {
+    "account": "sam",
+    "permission": "audit",
+    "parent": "active",
+    "auth": {
+      "threshold": 1,
+      "keys": [
+        {
+          "key":"EOS8J3Wm3W7Pk4poya1rAMSa3A2jq4jedTDNGEtXnFSyiBgknAhWr",
+          "weight":1
+        }
+      ],
+      "accounts":[],
+      "waits":[]
+    }
+}
+
+eos.updateauth(updateauthpara).then(rel => console.log(rel))
+
 ```
 # Environment
 
