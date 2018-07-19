@@ -709,6 +709,22 @@ eos.transaction(
           "receiver":"samkunnbanba",
           "bytes":102400000
         }
+      },
+      {
+        account: 'eosio',
+        name: 'delegatebw',
+        authorization: [{
+          actor: 'sam',
+          permission: 'active'
+        }
+        ],
+        data: {
+          "from":"sam",
+          "receiver":"samkunnbanba",
+          "stake_net_quantity": '1.0000 EOS',
+          "stake_cpu_quantity": '1.0000 EOS',
+          "transfer": 1
+        }
       }
 
     ]
